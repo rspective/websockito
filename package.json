@@ -1,0 +1,29 @@
+{
+    "name": "websockito",
+    "version": "0.1.0",
+    "description": "A module to teach you how to use Web Sockets in Node.js.",
+    "bin": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rspective/websockito"
+    },
+    "keywords": [
+        "workshop",
+        "adventure",
+        "tutorial",
+        "ws",
+        "socket.io",
+        "web sockets"
+    ],
+    "author": "Wojtek Gawroński (afronski@gmail.com)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/rspective/websockito/issues"
+    },
+    "bundleDependencies": [
+        "adventure"
+    ],
+    "dependencies": {
+        "adventure": "~2.10.0"
+    }
+}
