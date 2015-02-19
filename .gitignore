@@ -1,1 +1,11 @@
+# Logs and temps:
+*.log
+*.tmp
+
+# OSX stuff:
+.DS_Store
+*/.DS_Store
+*/*/.DS_Store
+
+# Node.js dependencies:
 node_modules/

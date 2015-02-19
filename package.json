@@ -2,13 +2,16 @@
     "name": "websockito",
     "version": "0.1.0",
     "description": "A module to teach you how to use Web Sockets in Node.js.",
-    "bin": "index.js",
+    "bin": "./websockito.js",
+    "preferGlobal": true,
     "repository": {
         "type": "git",
-        "url": "https://github.com/rspective/websockito"
+        "url": "git://github.com/rspective/websockito"
     },
     "keywords": [
         "workshop",
+        "workshopper",
+        "nodeschool.io",
         "adventure",
         "tutorial",
         "ws",
@@ -20,10 +23,10 @@
     "bugs": {
         "url": "https://github.com/rspective/websockito/issues"
     },
-    "bundleDependencies": [
-        "adventure"
-    ],
     "dependencies": {
-        "adventure": "~2.10.0"
-    }
+        "workshopper": "1.x",
+        "workshopper-exercise": "^0.2.2",
+        "workshopper-wrappedexec": "^0.1.1",
+        "workshopper-boilerplate": "0.0.1"
+  }
 }
