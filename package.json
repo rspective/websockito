@@ -18,7 +18,7 @@
     "socket.io",
     "web sockets"
   ],
-  "author": "Wojtek Gawroński (afronski@gmail.com)",
+  "author": "rspective (dev@rspective.pl)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/rspective/websockito/issues"
