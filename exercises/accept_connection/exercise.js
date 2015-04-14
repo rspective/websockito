@@ -29,22 +29,22 @@ exercise.addProcessor(function (mode, callback) {
 });
 
 
-function query (mode, callback) {
+function query(mode, callback) {
     var exercise = this;
 
-    function verify (port) {
+    function verify(port) {
         var url = 'ws://localhost:' + port;
 
         var wsClient = new WebSocketClient()
-			.on('connectFailed', function(err) {
+            .on('connectFailed', function (err) {
                 exercise.emit('fail', 'Error connecting to ' + url + ' - ' + err.code);
                 callback(null, false); // false = FAIL
             })
-			.on('connect', function(connection) {
+            .on('connect', function (connection) {
                 exercise.emit('pass', 'WebSocket connection accepted.');
                 callback(null, true); // true = PASS
-			})
-			.connect(url, 'echo');
+            })
+            .connect(url, 'echo');
     }
 
     verify(this.submissionPort);
