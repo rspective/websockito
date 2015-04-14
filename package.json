@@ -1,32 +1,33 @@
 {
-    "name": "websockito",
-    "version": "0.1.0",
-    "description": "A module to teach you how to use Web Sockets in Node.js.",
-    "bin": "./websockito.js",
-    "preferGlobal": true,
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/rspective/websockito"
-    },
-    "keywords": [
-        "workshop",
-        "workshopper",
-        "nodeschool.io",
-        "adventure",
-        "tutorial",
-        "ws",
-        "socket.io",
-        "web sockets"
-    ],
-    "author": "Wojtek Gawroński (afronski@gmail.com)",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/rspective/websockito/issues"
-    },
-    "dependencies": {
-        "workshopper": "1.x",
-        "workshopper-exercise": "^0.2.2",
-        "workshopper-wrappedexec": "^0.1.1",
-        "workshopper-boilerplate": "0.0.1"
+  "name": "websockito",
+  "version": "0.1.0",
+  "description": "A module to teach you how to use Web Sockets in Node.js.",
+  "bin": "./websockito.js",
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rspective/websockito"
+  },
+  "keywords": [
+    "workshop",
+    "workshopper",
+    "nodeschool.io",
+    "adventure",
+    "tutorial",
+    "ws",
+    "socket.io",
+    "web sockets"
+  ],
+  "author": "rspective (dev@rspective.pl)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rspective/websockito/issues"
+  },
+  "dependencies": {
+    "websocket": "^1.0.18",
+    "workshopper": "1.x",
+    "workshopper-boilerplate": "0.0.1",
+    "workshopper-exercise": "^0.2.2",
+    "workshopper-wrappedexec": "^0.1.1"
   }
 }
