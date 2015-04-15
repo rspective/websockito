@@ -3,9 +3,6 @@ var filecheck = require('workshopper-exercise/filecheck');
 var execute = require('workshopper-exercise/execute');
 var WebSocketClient = require('websocket').client;
 
-// the output will be long lines so make the comparison take that into account
-exercise.longCompareOutput = true;
-
 // checks that the submission file actually exists
 exercise = filecheck(exercise);
 
