@@ -31,15 +31,19 @@ function rndelem(array) {
 
 function query(mode, callback) {
     var exercise = this;
+    var connected = false;
+    var passed = false;
+
     var fail = function (msg) {
-        if (msg)
+        if (msg) {
             exercise.emit('fail', msg);
+        }
         callback(null, false)
     };
     var pass = function () {
+        passed = true;
         callback(null, true)
     };
-    var connected = false;
 
     var url = 'ws://localhost:' + exercise.submissionPort;
 
@@ -80,7 +84,9 @@ function query(mode, callback) {
             }
 
             setTimeout(function () {
-                fail("Timeout. Didn't receive sent messages.");
+                if (!passed) {
+                    fail("Timeout. Didn't receive sent messages.");
+                }
             }, 1000);
         })
         .connect(url, 'echo');
