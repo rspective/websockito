@@ -11,10 +11,19 @@ module.exports = function(grunt) {
                     jshintrc: true
                 }
             }
+        },
+        execute: {
+            test: {
+                src: ["exercises/test.js"]
+            }
         }
     });
 
     grunt.loadNpmTasks("grunt-contrib-jshint");
 
-    grunt.registerTask("default", ["jshint"]);
+    grunt.loadNpmTasks("grunt-execute");
+
+    grunt.registerTask("test", ["execute:test"]);
+
+    grunt.registerTask("default", ["jshint", "test"]);
 };
