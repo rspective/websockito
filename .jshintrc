@@ -1,0 +1,4 @@
+{
+  "node": true,      // NodeJS environment
+  "browser": false   // No browser specific globals (`window`, `document`, etc.)
+}

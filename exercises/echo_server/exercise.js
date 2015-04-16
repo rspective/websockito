@@ -38,11 +38,11 @@ function query(mode, callback) {
         if (msg) {
             exercise.emit('fail', msg);
         }
-        callback(null, false)
+        callback(null, false);
     };
     var pass = function () {
         passed = true;
-        callback(null, true)
+        callback(null, true);
     };
 
     var url = 'ws://localhost:' + exercise.submissionPort;
@@ -68,8 +68,8 @@ function query(mode, callback) {
 
                     for (var i = 0; i < receivedMessages.length; i++) {
                         if (receivedMessages[i] !== sentMessages[i]) {
-                            return fail('Received different message than sent ("'
-                                         + receivedMessages[i] + '" instead of "' + sentMessages[i] + '").');
+                            return fail('Received different message than sent ("' +
+                                         receivedMessages[i] + '" instead of "' + sentMessages[i] + '").');
                         }
                     }
                     exercise.emit('pass', 'Received the same messages as sent.');
