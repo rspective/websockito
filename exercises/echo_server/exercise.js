@@ -66,7 +66,8 @@ function query(mode, callback) {
                     var diff = _.difference(sentMessages, receivedMessages);
 
                     if (diff.length > 0) {
-                        fail("Received different message than sent. Missing are: " + diff.join(", "));
+                        fail("Expected messages: (" + sentMessages.join(", ") + "), " +
+                             "but received: (" + receivedMessages.join(", ") + ").");
                     } else {
                         exercise.emit("pass", "Received the same messages as sent.");
                         pass();
