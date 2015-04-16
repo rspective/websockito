@@ -1,12 +1,12 @@
-'use strict';
+"use strict";
 
 module.exports = function(grunt) {
 
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
+        pkg: grunt.file.readJSON("package.json"),
         jshint: {
             all: {
-                src: "exercises/**/*.js",
+                src: ["Gruntfile.js", "exercises/**/*.js"],
                 options: {
                     jshintrc: true
                 }
@@ -14,7 +14,7 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks("grunt-contrib-jshint");
 
-    grunt.registerTask('default', ['jshint']);
+    grunt.registerTask("default", ["jshint"]);
 };

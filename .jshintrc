@@ -1,4 +1,6 @@
 {
   "node": true,
-  "browser": false
+  "browser": false,
+
+  "quotmark": "double"
 }

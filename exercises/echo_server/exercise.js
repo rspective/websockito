@@ -1,8 +1,8 @@
-var exercise = require('workshopper-exercise')();
-var filecheck = require('workshopper-exercise/filecheck');
-var execute = require('workshopper-exercise/execute');
-var WebSocketClient = require('websocket').client;
-var _ = require('lodash');
+var exercise = require("workshopper-exercise")();
+var filecheck = require("workshopper-exercise/filecheck");
+var execute = require("workshopper-exercise/execute");
+var WebSocketClient = require("websocket").client;
+var _ = require("lodash");
 
 // checks that the submission file actually exists
 exercise = filecheck(exercise);
@@ -37,7 +37,7 @@ function query(mode, callback) {
 
     var fail = function (msg) {
         if (msg) {
-            exercise.emit('fail', msg);
+            exercise.emit("fail", msg);
         }
         callback(null, false);
     };
@@ -46,39 +46,39 @@ function query(mode, callback) {
         callback(null, true);
     };
 
-    var url = 'ws://localhost:' + exercise.submissionPort;
+    var url = "ws://localhost:" + exercise.submissionPort;
 
     var wsClient = new WebSocketClient()
-        .on('connectFailed', function (err) {
-            fail('Error connecting to ' + url + ' - ' + err.code);
+        .on("connectFailed", function (err) {
+            fail("Error connecting to " + url + " - " + err.code);
         })
-        .on('connect', function (connection) {
-            exercise.emit('pass', 'WebSocket connection accepted.');
+        .on("connect", function (connection) {
+            exercise.emit("pass", "WebSocket connection accepted.");
             connected = true;
 
             var receivedMessages = [];
             var sentMessages = [];
 
-            connection.on('message', function (msg) {
+            connection.on("message", function (msg) {
                 receivedMessages.push(msg.utf8Data);
 
                 if (receivedMessages.length > sentMessages.length) {
-                    fail('Received more messages than sent.');
+                    fail("Received more messages than sent.");
                 }
                 if (receivedMessages.length === sentMessages.length) {
                     var diff = _.difference(sentMessages, receivedMessages);
 
                     if (diff.length > 0) {
-                        fail('Received different message than sent. Missing are: ' + diff.join(', '));
+                        fail("Received different message than sent. Missing are: " + diff.join(", "));
                     } else {
-                        exercise.emit('pass', 'Received the same messages as sent.');
+                        exercise.emit("pass", "Received the same messages as sent.");
                         pass();
                     }
                 }
             });
 
             for (var i = 0; i < 3; i++) {
-                var message = rndelem(['Hello', 'Hi', 'Aloha', 'Salut', 'Ahoj']);
+                var message = rndelem(["Hello", "Hi", "Aloha", "Salut", "Ahoj"]);
                 sentMessages.push(message);
                 connection.send(message);
             }
@@ -89,11 +89,11 @@ function query(mode, callback) {
                 }
             }, 1000);
         })
-        .connect(url, 'echo');
+        .connect(url, "echo");
 
     setTimeout(function () {
         if (!connected) {
-            fail('Timeout. Connection not accepted.');
+            fail("Timeout. Connection not accepted.");
         }
     }, 1000);
 }
