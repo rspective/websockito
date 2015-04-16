@@ -2,6 +2,7 @@ var exercise = require('workshopper-exercise')();
 var filecheck = require('workshopper-exercise/filecheck');
 var execute = require('workshopper-exercise/execute');
 var WebSocketClient = require('websocket').client;
+var _ = require('lodash');
 
 // checks that the submission file actually exists
 exercise = filecheck(exercise);
@@ -65,15 +66,14 @@ function query(mode, callback) {
                     fail('Received more messages than sent.');
                 }
                 if (receivedMessages.length === sentMessages.length) {
+                    var diff = _.difference(sentMessages, receivedMessages);
 
-                    for (var i = 0; i < receivedMessages.length; i++) {
-                        if (receivedMessages[i] !== sentMessages[i]) {
-                            return fail('Received different message than sent ("' +
-                                         receivedMessages[i] + '" instead of "' + sentMessages[i] + '").');
-                        }
+                    if (diff.length > 0) {
+                        fail('Received different message than sent. Missing are: ' + diff.join(', '));
+                    } else {
+                        exercise.emit('pass', 'Received the same messages as sent.');
+                        pass();
                     }
-                    exercise.emit('pass', 'Received the same messages as sent.');
-                    pass();
                 }
             });
 
