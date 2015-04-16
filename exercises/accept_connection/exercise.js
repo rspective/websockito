@@ -2,16 +2,13 @@ var exercise = require("workshopper-exercise")();
 var filecheck = require("workshopper-exercise/filecheck");
 var execute = require("workshopper-exercise/execute");
 var WebSocketClient = require("websocket").client;
+var rndport = require("../../lib/rndport.js");
 
 // checks that the submission file actually exists
 exercise = filecheck(exercise);
 
 // execute the solution and submission in parallel with spawn()
 exercise = execute(exercise);
-
-function rndport() {
-    return 1024 + Math.floor(Math.random() * 64511);
-}
 
 // set up the data file to be passed to the submission
 exercise.addSetup(function (mode, callback) {
