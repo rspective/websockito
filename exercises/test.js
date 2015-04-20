@@ -10,7 +10,7 @@ exercises.forEach(function (name) {
         t.plan(2);
 
         var exerciseDir = name.toLowerCase().replace(" ", "_");
-        var solution  =path.join(__dirname, exerciseDir, "/solution/solution.js");
+        var solution = path.join(__dirname, exerciseDir, "/solution/solution.js");
 
         websockito([ "select", name ])
             .on("exit", selected)

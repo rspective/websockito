@@ -12,7 +12,7 @@ Once you accept a request you get a connection object on which you can listen fo
 wsServer.on('request', function(req){
     var connection = req.accept('echo', req.origin);
     connection.on('message', function(msg) {
-        // handle the message;
+        // handle the message
     });
 });
 ```
