@@ -12,5 +12,8 @@ var wsServer = new WebSocketServer({
 });
 
 wsServer.on("request", function(req) {
-    req.accept("echo", req.origin);
+    var connection = req.accept("echo", req.origin);
+    connection.on("message", function(message) {
+        connection.send(message.utf8Data);
+    });
 });

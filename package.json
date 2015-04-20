@@ -24,10 +24,17 @@
     "url": "https://github.com/rspective/websockito/issues"
   },
   "dependencies": {
+    "lodash": "~3.6.0",
     "websocket": "^1.0.18",
     "workshopper": "1.x",
     "workshopper-boilerplate": "0.0.1",
     "workshopper-exercise": "^0.2.2",
     "workshopper-wrappedexec": "^0.1.1"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-execute": "~0.2.2",
+    "tape": "~4.0.0"
   }
 }

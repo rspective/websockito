@@ -1,20 +1,14 @@
-var exercise = require('workshopper-exercise')();
-var filecheck = require('workshopper-exercise/filecheck');
-var execute = require('workshopper-exercise/execute');
-var WebSocketClient = require('websocket').client;
-
-// the output will be long lines so make the comparison take that into account
-exercise.longCompareOutput = true;
+var exercise = require("workshopper-exercise")();
+var filecheck = require("workshopper-exercise/filecheck");
+var execute = require("workshopper-exercise/execute");
+var WebSocketClient = require("websocket").client;
+var rndport = require("../../lib/rndport.js");
 
 // checks that the submission file actually exists
 exercise = filecheck(exercise);
 
 // execute the solution and submission in parallel with spawn()
 exercise = execute(exercise);
-
-function rndport() {
-    return 1024 + Math.floor(Math.random() * 64511);
-}
 
 // set up the data file to be passed to the submission
 exercise.addSetup(function (mode, callback) {
@@ -33,18 +27,18 @@ function query(mode, callback) {
     var exercise = this;
 
     function verify(port) {
-        var url = 'ws://localhost:' + port;
+        var url = "ws://localhost:" + port;
 
         var wsClient = new WebSocketClient()
-            .on('connectFailed', function (err) {
-                exercise.emit('fail', 'Error connecting to ' + url + ' - ' + err.code);
+            .on("connectFailed", function (err) {
+                exercise.emit("fail", "Error connecting to " + url + " - " + err.code);
                 callback(null, false); // false = FAIL
             })
-            .on('connect', function (connection) {
-                exercise.emit('pass', 'WebSocket connection accepted.');
+            .on("connect", function (connection) {
+                exercise.emit("pass", "WebSocket connection accepted.");
                 callback(null, true); // true = PASS
             })
-            .connect(url, 'echo');
+            .connect(url, "echo");
     }
 
     verify(this.submissionPort);
